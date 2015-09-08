@@ -2,7 +2,20 @@
   "clean": ["~"]
 }, {
   "link": {
-    "~/.dotfiles": ""
+    "~/.dotfiles": "",
+    "~/.aliases": ".aliases",
+    "~/.bash_profile": ".bash_profile",
+    "~/.bash_prompt": ".bash_prompt",
+    "~/.bash_prompt": ".bash_prompt",
+    "~/.dircolors": ".dircolors",
+    "~/.exports": ".exports",
+    "~/.functions": ".functions",
+    "~/.gitconfig": ".gitconfig",
+    "~/.gitignore": ".gitignore",
+    "~/.gitignore": ".gitignore",
+    "~/.hushlogin": ".hushlogin",
+    "~/.inputrc": ".inputrc",
+    "~/.vimrc": ".vimrc"
   }
 }, {
   "shell": []
