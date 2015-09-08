@@ -1,6 +1,22 @@
 [{
   "clean": ["~"]
 }, {
+  "shell": [
+    "mkdir -p ~/migration/home",
+    "brew leaves > ~/migration/brew-list.txt",
+    "brew cask list > ~/migration/cask-list.txt",
+    "npm list -g --depth=0 > ~/migration/npm-g-list.txt",
+
+    "cp ~/.extra ~/migration/home",
+    "cp ~/.gitconfig.local ~/migration/home",
+    "cp -R ~/.ssh ~/migration/home",
+    "cp ~/.z ~/migration/home",
+    "cp -R ~/.gnupg ~/migration/home",
+
+    "cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration",
+    "cp -R ~/Library/Services ~/migration"
+  ]
+}, {
   "link": {
     "~/.dotfiles": "",
     "~/.aliases": ".aliases",
