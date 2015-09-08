@@ -1,21 +1,20 @@
-[user]
-	name = Thomas
-	email = lebeau.thomas@gmail.com
-[credential]
-	helper = cache --timeout=3600
 [core]
-	editor = subl -n -w
-	excludesfile = ~/.gitignore
-	quotepath = false
-	autocrlf = input
+  editor = subl -n -w
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  quotepath = false
+  autocrlf = input
+
 [color]
-	ui = 1
+  ui = always
+
+[merge]
+  tool = opendiff
 
 [alias]
   st = status -s
 
   cl = clone
-
   ci = commit
   cm = commit -m
   cma = commit -a -m
@@ -102,22 +101,26 @@
   theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
 [push]
-	default = matching
-
-[filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
+  default = current
 
 [url "https://"]
-	insteadOf = git://
+  insteadOf = git://
+
+[filter "media"]
+  clean = git media clean %f
+  smudge = git media smudge %f
+  required = true
 
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+
+[include]
+  # For username / github token / etc
+  path = ~/.gitconfig.local
