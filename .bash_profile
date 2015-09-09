@@ -79,6 +79,11 @@ fi;
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
 
+
+# Add grunt  and gulp autocompletion
+eval "$(grunt --completion=bash)"
+eval "$(gulp --completion=bash)"
+
 ##
 ## better `cd`'ing
 ##
@@ -89,9 +94,6 @@ shopt -s nocaseglob
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# Add colors to terminal
-# export CLICOLOR=1
-
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # export PATH="$PATH:$HOME/.bin"
 # export PATH="$PATH:$HOME/.composer/vendor/bin"
@@ -99,6 +101,3 @@ shopt -s cdspell;
 # export PATH=/usr/local/sbin:$PATH
 
 
-# Add grunt  and gulp autocompletion
-# eval "$(grunt --completion=bash)"
-# eval "$(gulp --completion=bash)"
