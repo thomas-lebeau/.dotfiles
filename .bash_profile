@@ -67,6 +67,11 @@ if  which brew > /dev/null; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 fi;
 
+# git completion
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type __git_complete &> /dev/null; then
     __git_complete g __git_main

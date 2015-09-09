@@ -26,6 +26,7 @@
     "~/.dircolors": "LS_COLORS/LS_COLORS",
     "~/.exports": ".exports",
     "~/.functions": ".functions",
+    "~/.git-completion.bash": ".git-completion.bash",
     "~/.gitattributes": ".gitattributes",
     "~/.gitconfig": ".gitconfig",
     "~/.gitignore": ".gitignore",
