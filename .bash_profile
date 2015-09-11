@@ -56,18 +56,18 @@ if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
 fi;
 
 # bash completion.
-if  which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-    source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion;
-fi;
+# if  which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+#     source "$(brew --prefix)/share/bash-completion/bash_completion";
+# elif [ -f /etc/bash_completion ]; then
+#     source /etc/bash_completion;
+# fi;
 
 # homebrew completion
-if  which brew > /dev/null; then
-    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-fi;
+# if  which brew > /dev/null; then
+#     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
+# fi;
 
-# git completion
+# # git completion
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
@@ -86,8 +86,8 @@ complete -W "NSGlobalDomain" defaults
 
 
 # Add grunt  and gulp autocompletion
-eval "$(grunt --completion=bash)"
-eval "$(gulp --completion=bash)"
+# eval "$(grunt --completion=bash)"
+# eval "$(gulp --completion=bash)"
 
 ##
 ## better `cd`'ing
