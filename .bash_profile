@@ -35,7 +35,7 @@ export HISTFILESIZE=$HISTSIZE                   # big big history
 which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
 
 # Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ^ the only downside with this is [up] on the readline will go over all history not just this bash session.
 
 ##
@@ -98,11 +98,3 @@ shopt -s nocaseglob
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-# export PATH="$PATH:$HOME/.bin"
-# export PATH="$PATH:$HOME/.composer/vendor/bin"
-
-# export PATH=/usr/local/sbin:$PATH
-
-

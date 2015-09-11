@@ -109,7 +109,7 @@ __powerline() {
         PS1+="$BG_EXIT $RESET "
     }
 
-    PROMPT_COMMAND=ps1
+    export PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
 }
 
 __powerline
