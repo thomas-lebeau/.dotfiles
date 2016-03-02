@@ -7,8 +7,8 @@ node_modules
 .vim/undo
 *.sw
 
-# git credential file
-.gitconfig.local
+# Extras
+extras
 
 # Folder view configuration files
 .DS_Store
