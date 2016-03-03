@@ -34,13 +34,3 @@ ln -sFfv "${BASEDIR}/.gitignore" ~/.gitignore
 ln -sFfv "${BASEDIR}/.hushlogin" ~/.hushlogin
 ln -sFfv "${BASEDIR}/.inputrc" ~/.inputrc
 ln -sFfv "${BASEDIR}/.vimrc" ~/.vimrc
-
-# Extras
-ln -sFfv "${BASEDIR}/extras/.extra" ~/.extra
-ln -sFfv "${BASEDIR}/extras/.gitconfig.local" ~/.gitconfig.local
-ln -shfv "${BASEDIR}/extras/.ssh/" ~/.ssh
-ln -sFfv "${BASEDIR}/extras/.gnupg" ~/.gnupg
-
-# Fix private keys permitions
-chmod 700 ~/.ssh/id_rsa
-chmod 700 ~/.ssh/github_rsa
