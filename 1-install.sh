@@ -19,7 +19,6 @@ npm list -g --depth=0 > ~/migration/npm-g-list.txt
 
 
 # Symlink a bunch of files
-ln -shfv "${BASEDIR}" ~/.dotfiles
 ln -sFfv "${BASEDIR}/.aliases" ~/.aliases
 ln -sFfv "${BASEDIR}/.bash_profile" ~/.bash_profile
 ln -sFfv "${BASEDIR}/.bash_prompt" ~/.bash_prompt
@@ -34,3 +33,6 @@ ln -sFfv "${BASEDIR}/.gitignore" ~/.gitignore
 ln -sFfv "${BASEDIR}/.hushlogin" ~/.hushlogin
 ln -sFfv "${BASEDIR}/.inputrc" ~/.inputrc
 ln -sFfv "${BASEDIR}/.vimrc" ~/.vimrc
+mkdir ~/.nvm
+
+# nvm install stable

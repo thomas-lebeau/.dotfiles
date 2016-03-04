@@ -14,6 +14,9 @@ extras
 .DS_Store
 Desktop.ini
 
+# Editor config files
+.idea
+
 # Thumbnail cache files
 ._*
 Thumbs.db
