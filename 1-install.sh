@@ -13,13 +13,21 @@ git submodule update --init --recursive
 mkdir -p ~/migration
 cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration
 cp -R ~/Library/Services ~/migration
-brew leaves > ~/migration/brew-list.txt
-brew cask list > ~/migration/cask-list.txt
-npm list -g --depth=0 > ~/migration/npm-g-list.txt
+cp -R ~/.ssh ~/migration
+cp ~/.extra ~/migration
+cp ~/.gitconfig.local ~/migration
+
+if which brew >/dev/null; then
+  brew leaves > ~/migration/brew-list.txt
+  brew cask list > ~/migration/cask-list.txt
+fi;
+
+if which npm > /dev/null; then
+  npm list -g --depth=0 > ~/migration/npm-g-list.txt
+fi;
 
 
 # Symlink a bunch of files
-ln -shfv "${BASEDIR}" ~/.dotfiles
 ln -sFfv "${BASEDIR}/.aliases" ~/.aliases
 ln -sFfv "${BASEDIR}/.bash_profile" ~/.bash_profile
 ln -sFfv "${BASEDIR}/.bash_prompt" ~/.bash_prompt
@@ -34,13 +42,3 @@ ln -sFfv "${BASEDIR}/.gitignore" ~/.gitignore
 ln -sFfv "${BASEDIR}/.hushlogin" ~/.hushlogin
 ln -sFfv "${BASEDIR}/.inputrc" ~/.inputrc
 ln -sFfv "${BASEDIR}/.vimrc" ~/.vimrc
-
-# Extras
-ln -sFfv "${BASEDIR}/extras/.extra" ~/.extra
-ln -sFfv "${BASEDIR}/extras/.gitconfig.local" ~/.gitconfig.local
-ln -shfv "${BASEDIR}/extras/.ssh/" ~/.ssh
-ln -sFfv "${BASEDIR}/extras/.gnupg" ~/.gnupg
-
-# Fix private keys permitions
-chmod 700 ~/.ssh/id_rsa
-chmod 700 ~/.ssh/github_rsa
