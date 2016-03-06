@@ -20,7 +20,9 @@ alias cask='brew cask' # i <3 u cask
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias dig="dig +nocmd any +multiline +noall +answer" # All the dig info
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash" # Empty the Trash on all mounted volumes and the main HDD
-alias git=hub
+if which hub > /dev/null; then
+  alias git=hub
+fi
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias killphp="ps -ef | grep 'php -S' |grep -v grep | awk '{print $2}' | xargs kill -9"
