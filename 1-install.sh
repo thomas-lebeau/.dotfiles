@@ -13,9 +13,18 @@ git submodule update --init --recursive
 mkdir -p ~/migration
 cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration
 cp -R ~/Library/Services ~/migration
-brew leaves > ~/migration/brew-list.txt
-brew cask list > ~/migration/cask-list.txt
-npm list -g --depth=0 > ~/migration/npm-g-list.txt
+cp -R ~/.ssh ~/migration
+cp ~/.extra ~/migration
+cp ~/.gitconfig.local ~/migration
+
+if which brew >/dev/null; then
+  brew leaves > ~/migration/brew-list.txt
+  brew cask list > ~/migration/cask-list.txt
+fi;
+
+if which npm > /dev/null; then
+  npm list -g --depth=0 > ~/migration/npm-g-list.txt
+fi;
 
 
 # Symlink a bunch of files
