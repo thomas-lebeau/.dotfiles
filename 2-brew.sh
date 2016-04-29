@@ -23,6 +23,9 @@ brew install gnu-sed --default-names
 # Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
+echo "/usr/local/bin/bash" >> /etc/shells
+chsh -s /usr/local/bin/bash
+
 # regular bash-completion package is held back to an older release, so we get latest from versions.
 #   github.com/Homebrew/homebrew/blob/master/Library/Formula/bash-completion.rb#L3-L4
 brew tap homebrew/versions

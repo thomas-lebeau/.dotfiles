@@ -66,3 +66,6 @@ alias lsd='ls -l | grep "^d"'
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
+
+alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
