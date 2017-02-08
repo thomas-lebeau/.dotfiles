@@ -6,6 +6,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Shortcuts
+alias c="code"
 alias dl="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias g="cd ~/Projects/github"
@@ -23,6 +24,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash" # Empty th
 if which hub > /dev/null; then
   alias git=hub
 fi
+alias gti=git
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias killphp="ps -ef | grep 'php -S' |grep -v grep | awk '{print $2}' | xargs kill -9"
@@ -31,7 +33,7 @@ alias npmls="npm ls --depth 0"
 alias please='sudo !!'
 alias rm="rm -i" # safety first
 alias sudo='sudo '
-alias undopush="git push -f origin HEAD^:master"
+# alias undopush="git push -f origin HEAD^:master"
 
 alias ll='ls -l'
 alias l='ls -l'
@@ -47,7 +49,6 @@ else # OS X `ls`
 fi
 
 # ls options: F = put `/` after folders, h = byte unit suffixes, color! (even with piping to awk)
-# alias ls='CLICOLOR_FORCE=1 gls -aFh ${colorflag} --group-directories-first'
 alias ls='CLICOLOR_FORCE=1 gls -aFh ${colorflag}'
 
 # List ALL files (colorized() in long format, show permissions in octal
@@ -68,6 +69,3 @@ alias lsd='ls -l | grep "^d"'
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
-
-alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
-alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'

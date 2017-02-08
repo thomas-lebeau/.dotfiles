@@ -43,27 +43,28 @@ __powerline() {
     readonly REVERSE="\[$(tput rev)\]"
     readonly RESET="\[$(tput sgr0)\]"
     readonly BOLD="\[$(tput bold)\]"
+    readonly CLEAR="\[$(tput el)\]"
 
     # Unicode symbols
-    readonly PS_SYMBOL_DARWIN=''
-    readonly PS_SYMBOL_LINUX='$'
-    readonly PS_SYMBOL_OTHER='%'
     readonly GIT_BRANCH_SYMBOL='⑂ '
     readonly GIT_BRANCH_CHANGED_SYMBOL='*'
     readonly GIT_BRANCH_CLEAN_SYMBOL='✔︎'
     readonly GIT_NEED_PUSH_SYMBOL='⇡'
     readonly GIT_NEED_PULL_SYMBOL='⇣'
 
-    # what OS?
-    case "$(uname)" in
-        Darwin)
-            readonly PS_SYMBOL=$PS_SYMBOL_DARWIN
+    # what terminal?
+    case "$TERM_PROGRAM" in
+        iTerm.app)
+            readonly PS_SYMBOL="👉"
+            readonly PS_SYMBOL_ERROR="\a💥"
             ;;
-        Linux)
-            readonly PS_SYMBOL=$PS_SYMBOL_LINUX
+        Apple_Terminal)
+            readonly PS_SYMBOL="👉"
+            readonly PS_SYMBOL_ERROR="\a💥"
             ;;
         *)
-            readonly PS_SYMBOL=$PS_SYMBOL_OTHER
+            readonly PS_SYMBOL=$FG_GREEN"❯"
+            readonly PS_SYMBOL_ERROR=$FG_RED"\a●"
     esac
 
     __git_info() {
@@ -93,10 +94,11 @@ __powerline() {
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
+
         if [ $? -eq 0 ]; then
-            local BG_EXIT="👉"
+            local BG_EXIT=$PS_SYMBOL
         else
-            local BG_EXIT="\a💥"
+            local BG_EXIT=$PS_SYMBOL_ERROR
         fi
 
         # PS1="$BG_BASE0 $RESET$BG_BASE1 $RESET$BG_BASE2 $RESET$BG_BASE3 $RESET$BG_BASE00 $RESET$BG_BASE01 $RESET$BG_BASE02 $RESET$BG_BASE03 $RESET \n"
@@ -104,7 +106,7 @@ __powerline() {
         # PS1+="$BOLD$BG_YELLOW $BG_ORANGE $BG_RED $BG_MAGENTA $BG_VIOLET $BG_BLUE $BG_CYAN $BG_GREEN $RESET \n"
         PS1="$BG_CYAN$FG_BASE02 \A $RESET"
         PS1+="$BG_YELLOW$FG_BASE02 \w $RESET"
-        PS1+="$BG_MAGENTA$FG_BASE02$(__git_info)$RESET"
+        PS1+="$BG_MAGENTA$FG_BASE02$(__git_info)$RESET$CLEAR"
         PS1+="\n"
         PS1+="$BG_EXIT $RESET "
     }

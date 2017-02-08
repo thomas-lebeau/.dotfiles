@@ -1,5 +1,5 @@
 [core]
-  editor = subl -n -w
+  editor = subl
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   quotepath = false
@@ -14,6 +14,7 @@
 [alias]
   st = status -s
 
+  c = checkout
   cl = clone
   ci = commit
   cm = commit -m
@@ -26,12 +27,17 @@
 
   filelog = log -u
   fl = log -u
+  f = fetch
+  p = pull
+  fp = "!f() { git fetch && git pull; }; f"
+  fm = "!f() { git fetch origin develop:develop && git merge develop; }; f"
 
   ai = add --interactive
 
-  co = checkout
+  co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
+  fco = "!f() { git fetch && git co -a; }; f"
+
   br = branch
-  #"!git branch -ra | grep -v done"
   bra = branch -ra
   #list commands
   le = log --oneline --decorate
@@ -52,7 +58,6 @@
   dlc = diff --cached HEAD^
   dr  = "!f() { git diff "$1"^.."$1"; }; f"
   diffr  = "!f() { git diff "$1"^.."$1"; }; f"
-  branch = branch -ra
 
   #reset commands
   r = reset
@@ -75,14 +80,12 @@
   cp = cherry-pick
   grep = grep -Ii
   gr = grep -Ii
+
   #grep from root folder
   gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
 
   #grep on filename
-  f = "!git ls-files | grep -i"
-
-  #rename branch tree to done-
-  done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+  #f = "!git ls-files | grep -i"
 
   #assume aliases
   assume = update-index --assume-unchanged
@@ -124,3 +127,6 @@
 [include]
   # For username / github token / etc
   path = ~/.gitconfig.local
+
+[credential]
+	helper = osxkeychain
