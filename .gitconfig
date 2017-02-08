@@ -1,5 +1,5 @@
 [core]
-  editor = subl
+  editor = subl -n -w
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   quotepath = false
