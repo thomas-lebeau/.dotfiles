@@ -6,6 +6,7 @@ node_modules
 .vim/swaps/*
 .vim/undo
 *.sw
+.vscode
 
 # Extras
 extras

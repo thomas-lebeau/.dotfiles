@@ -5,11 +5,6 @@ for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
 done
 unset file
 
-# to help sublimelinter etc with finding my PATHS
-case $- in
-   *i*) source ~/.extra
-esac
-
 # generic colouriser
 GRC=`which grc`
 if [ "$TERM" != dumb ] && [ -n "$GRC" ]
@@ -85,11 +80,6 @@ fi;
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
 
-
-# Add grunt  and gulp autocompletion
-# eval "$(grunt --completion=bash)"
-# eval "$(gulp --completion=bash)"
-
 ##
 ## better `cd`'ing
 ##
@@ -99,3 +89,5 @@ shopt -s nocaseglob
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+# export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=$(/usr/libexec/java_home)

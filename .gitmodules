@@ -7,6 +7,3 @@
 [submodule "dracula-theme"]
 	path = dracula-theme
 	url = https://github.com/zenorocha/dracula-theme
-[submodule "githubicons"]
-	path = githubicons
-	url = https://github.com/gregoryzuckerman/githubicons

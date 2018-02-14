@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # based on bash-powerline.sh
+
 __powerline() {
 
     # Solarized colorscheme
@@ -46,7 +47,7 @@ __powerline() {
     readonly CLEAR="\[$(tput el)\]"
 
     # Unicode symbols
-    readonly GIT_BRANCH_SYMBOL='⑂ '
+    readonly GIT_BRANCH_SYMBOL=' '
     readonly GIT_BRANCH_CHANGED_SYMBOL='*'
     readonly GIT_BRANCH_CLEAN_SYMBOL='✔︎'
     readonly GIT_NEED_PUSH_SYMBOL='⇡'
@@ -55,16 +56,16 @@ __powerline() {
     # what terminal?
     case "$TERM_PROGRAM" in
         iTerm.app)
-            readonly PS_SYMBOL="👉"
+            readonly PS_SYMBOL="👉 "
             readonly PS_SYMBOL_ERROR="\a💥"
             ;;
         Apple_Terminal)
-            readonly PS_SYMBOL="👉"
+            readonly PS_SYMBOL="👉 "
             readonly PS_SYMBOL_ERROR="\a💥"
             ;;
         *)
-            readonly PS_SYMBOL=$FG_GREEN"❯"
-            readonly PS_SYMBOL_ERROR=$FG_RED"\a●"
+            readonly PS_SYMBOL=$FG_GREEN""
+            readonly PS_SYMBOL_ERROR=$FG_RED"\a"
     esac
 
     __git_info() {
@@ -85,7 +86,7 @@ __powerline() {
         [ -n "$behindN" ] && marks+="$BG_BLUE$FG_BASE02 $GIT_NEED_PULL_SYMBOL$behindN $RESET"
 
         # branch is modified?
-        [ -n "$($git_eng status --porcelain)" ] && marks+="$BG_ORANGE$FG_BASE02 $GIT_BRANCH_CHANGED_SYMBOL $RESET" || marks+="$BG_GREEN$FG_BASE02 $GIT_BRANCH_CLEAN_SYMBOL $RESET"
+        [ -n "$($git_eng status --porcelain)" ] && marks+="$BG_ORANGE$FG_BASE02 $GIT_BRANCH_CHANGED_SYMBOL $RESET" || marks+="$BG_GREEN$FG_BASE02 $GIT_BRANCH_CLEAN_SYMBOL$RESET"
 
         # print the git branch segment without a trailing newline
         printf " $GIT_BRANCH_SYMBOL$branch $marks "
@@ -108,7 +109,7 @@ __powerline() {
         PS1+="$BG_YELLOW$FG_BASE02 \w $RESET"
         PS1+="$BG_MAGENTA$FG_BASE02$(__git_info)$RESET$CLEAR"
         PS1+="\n"
-        PS1+="$BG_EXIT $RESET "
+        PS1+="$BG_EXIT $RESET"
     }
 
     export PROMPT_COMMAND="ps1; $PROMPT_COMMAND"

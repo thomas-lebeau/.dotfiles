@@ -1,4 +1,4 @@
-	# Easier navigation: .., ..., ...., ....., ~ and -
+# Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias cd..="cd .."
 alias ...="cd ../.."
@@ -9,7 +9,6 @@ alias .....="cd ../../../.."
 alias c="code"
 alias dl="cd ~/Downloads"
 alias d="cd ~/Desktop"
-alias g="cd ~/Projects/github"
 alias h="history"
 alias j="jobs"
 alias o="open ."
@@ -24,10 +23,9 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash" # Empty th
 if which hub > /dev/null; then
   alias git=hub
 fi
-alias gti=git
+alias g=git
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-alias killphp="ps -ef | grep 'php -S' |grep -v grep | awk '{print $2}' | xargs kill -9"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias npmls="npm ls --depth 0"
 alias please='sudo !!'

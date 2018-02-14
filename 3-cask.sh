@@ -12,7 +12,6 @@ brew tap caskroom/versions
 
 # daily
 brew cask install spectacle
-brew cask install rescuetime
 brew cask install transmission
 brew cask install vlc
 

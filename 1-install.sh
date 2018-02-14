@@ -43,6 +43,9 @@ ln -sFfv "${BASEDIR}/.hushlogin" ~/.hushlogin
 ln -sFfv "${BASEDIR}/.inputrc" ~/.inputrc
 ln -sFfv "${BASEDIR}/.vimrc" ~/.vimrc
 ln -sFfv "${BASEDIR}/.zshrc" ~/.zshrc
+# ln -sFfv "${BASEDIR}/.npmrc" ~/.npmrc
+ln -sFfv "${BASEDIR}/.editorconfig" ~/.editorconfig
+
 
 mkdir ~/.nvm
 
