@@ -36,13 +36,13 @@ which shopt > /dev/null && shopt -s histappend  # append to history, don't overw
 ##
 ## hooking in other apps…
 ##
-export NVM_DIR="$HOME/.nvm"
-. $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+# . $(brew --prefix nvm)/nvm.sh
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # z beats cd most of the time.
 #   github.com/rupa/z
-source ~/.dotfiles/z/z.sh
+# source ~/.dotfiles/z/z.sh
 
 ##
 ## Completion…
@@ -90,4 +90,3 @@ shopt -s nocaseglob
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 # export ANDROID_HOME=/usr/local/share/android-sdk
-export JAVA_HOME=$(/usr/libexec/java_home)

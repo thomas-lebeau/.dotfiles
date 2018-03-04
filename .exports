@@ -20,4 +20,4 @@ eval "$(gdircolors -b ~/.dircolors)"
 
 # eval "$(nodenv init -)"
 
-eval "$(direnv hook bash)"
+source $(brew --prefix)/etc/profile.d/z.sh

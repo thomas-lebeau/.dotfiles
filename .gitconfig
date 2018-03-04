@@ -14,16 +14,13 @@
 [alias]
   st = status -s
 
-  c = checkout
+  co = checkout
   cl = clone
   ci = commit
   cm = commit -m
   cma = commit -a -m
   ca = commit --amend
   amend = commit --amend
-  caa = commit -a --amend -C HEAD
-  # commit with random message
-  ci-rand = !sh -c \"git commit -m '$(curl -s http://whatthecommit.com/index.txt)'\"
 
   filelog = log -u
   fl = log -u
@@ -34,8 +31,8 @@
 
   ai = add --interactive
 
-  co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
-  fco = "!f() { git fetch && git co -a; }; f"
+  # co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
+  # fco = "!f() { git fetch && git co -a; }; f"
   dev = checkout develop
   master = checkout master
 
@@ -108,7 +105,7 @@
   cleanup = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
 
 [push]
-  default = current
+  default = nothing
 
 [url "https://"]
   insteadOf = git://
@@ -138,5 +135,5 @@
 [fetch]
   prune = true
 
-[init]
-  templatedir = ~/.git-templates
+[branch]
+	autosetuprebase = always
