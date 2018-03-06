@@ -11,104 +11,52 @@
 [merge]
   tool = opendiff
 
-[alias]
-  st = status -s
+[credential]
+  helper = osxkeychain
 
-  co = checkout
-  cl = clone
-  ci = commit
-  cm = commit -m
-  cma = commit -a -m
-  ca = commit --amend
-  amend = commit --amend
+[fetch]
+  prune = true
 
-  filelog = log -u
-  fl = log -u
-  f = fetch
-  p = pull
-  fp = "!f() { git fetch && git pull; }; f"
-  fm = "!f() { git fetch origin develop:develop && git merge develop; }; f"
+[branch]
+	autosetuprebase = always
 
-  ai = add --interactive
-
-  # co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
-  # fco = "!f() { git fetch && git co -a; }; f"
-  dev = checkout develop
-  master = checkout master
-
-  br = branch
-  bra = branch -ra
-  #list commands
-  le = log --oneline --decorate
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-  lc  = "!f() { git ll "$1"^.."$1"; }; f"
-  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-  #list all aliases
-  la = "!git config -l | grep alias | cut -c 7-"
-  diff = diff --word-diff
-  d = diff --word-diff
-  dc = diff --cached
-  #list modified files in last commit
-  dl = "!git ll -1"
-  #diff last commit
-  dlc = diff --cached HEAD^
-  dr  = "!f() { git diff "$1"^.."$1"; }; f"
-  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
-
-  #reset commands
-  r = reset
-  r1 = reset HEAD^
-  r2 = reset HEAD^^
-  rh = reset --hard
-  rh1 = reset HEAD^ --hard
-  rh2 = reset HEAD^^ --hard
-
-  #git svn
-  svnr = svn rebase
-  svnd = svn dcommit
-  svnl = svn log --oneline --show-commit
-
-  #stash
-  sl = stash list
-  sa = stash apply
-  ss = stash save
-
-  cp = cherry-pick
-  grep = grep -Ii
-  gr = grep -Ii
-
-  #grep from root folder
-  gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
-
-  #grep on filename
-  #f = "!git ls-files | grep -i"
-
-  #assume aliases
-  assume = update-index --assume-unchanged
-  unassume = update-index --no-assume-unchanged
-  #show assumed files
-  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-  #unassume all the assumed files
-  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
-  assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
-
-  lasttag = describe --tags --abbrev=0
-  lt = describe --tags --abbrev=0
-
-  #merges
-  ours = "!f() { git co --ours $@ && git add $@; }; f"
-  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
-
-  cleanup = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
+[user]
+  useconfigonly = true
 
 [push]
   default = nothing
 
-[url "https://"]
-  insteadOf = git://
+[status]
+  showUntrackedFiles = all
+
+# [url "https://"]
+  # insteadOf = git://
+
+[alias]
+  br = branch
+  ca = commit --amend
+  ci = commit
+  cm = commit -m
+  co = checkout
+  ls = log --pretty=oneline --abbrev-commit --graph --decorate
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase master -i
+  rs = rebase --skip
+  st = status -s
+
+  aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  abort = checkout -- .
+  amend = commit --amend --no-edit
+  clean = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
+  diff = diff --word-diff
+  force = push --force-with-lease
+  pur = pull upstream master --rebase
+  undo = reset --soft HEAD^
+  wait = reset HEAD
+
+  # co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
+  # fco = "!f() { git fetch && git co -a; }; f"
 
 [filter "media"]
   clean = git media clean %f
@@ -128,15 +76,3 @@
 [include]
   # For username / github token / etc
   path = ~/.gitconfig.local
-
-[credential]
-  helper = osxkeychain
-
-[fetch]
-  prune = true
-
-[branch]
-	autosetuprebase = always
-
-[user]
-  useconfigonly = true

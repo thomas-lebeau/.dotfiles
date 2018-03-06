@@ -112,7 +112,13 @@ __powerline() {
         PS1+="$BG_EXIT $RESET"
     }
 
-    export PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
+    setItermTitle() {
+        if [ $ITERM_SESSION_ID ]; then
+            echo -ne "\033];${PWD##*/}\007";
+        fi
+    }
+
+    export PROMPT_COMMAND="setItermTitle; ps1; $PROMPT_COMMAND"
 }
 
 __powerline
