@@ -4,9 +4,15 @@
   attributesfile = ~/.gitattributes
   quotepath = false
   autocrlf = input
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 
 [color]
-  ui = always
+  ui = auto
+
+[commit]
+  gpgsign = true
 
 [merge]
   tool = opendiff
@@ -38,20 +44,26 @@
   ci = commit
   cm = commit -m
   co = checkout
-  ls = log --pretty=oneline --abbrev-commit --graph --decorate
+  ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
   ra = rebase --abort
   rc = rebase --continue
   ri = rebase master -i
   rs = rebase --skip
-  st = status -s
+  st = ! git status -s && git diff --shortstat
 
   aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
   abort = checkout -- .
   amend = commit --amend --no-edit
   clean = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
   diff = diff --word-diff
+  fixup = commit -m fixup --no-verify
   force = push --force-with-lease
-  pur = pull upstream master --rebase
+  pur = pull upstream master --rebase --log --no-stat
+  stsh = stash --keep-index
+  staash = stash --include-untracked
+  staaash = stash --all
+  standup = "!f() { for dir in ../*; do (echo "$dir" && cd "$dir" && git su); done; }; f"
+  su = !"git log --branches --since=$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi) --author=$(git config --get user.email) --format=format:'%C(cyan)%>(14)%ar %C(yellow)%h %Creset %s'"
   undo = reset --soft HEAD^
   wait = reset HEAD
 
