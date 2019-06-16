@@ -7,10 +7,6 @@ export LANG="en_US"
 export HOMEBREW_GITHUB_API_TOKEN=b9b5875c57b50cefa08a48821d93ac089572af1d
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-# export PATH="$PATH:$HOME/.bin"
-# export PATH="$PATH:$HOME/.composer/vendor/bin"
-
 # Homebrew
 export PATH=/usr/local/sbin:$PATH
 
@@ -25,4 +21,3 @@ source $(brew --prefix)/etc/profile.d/z.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

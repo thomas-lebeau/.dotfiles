@@ -49,14 +49,16 @@
   rc = rebase --continue
   ri = rebase master -i
   rs = rebase --skip
-  st = ! git status -s && git diff --shortstat
+  st = !git status -s && git diff --shortstat
+  w = which
+  cl = lucky
 
-  aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
   abort = checkout -- .
   amend = commit --amend --no-edit
   clean = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
   diff = diff --word-diff
-  fixup = commit -m fixup --no-verify
+  fixup = commit -m 'chore(*): Fixup'
   force = push --force-with-lease
   pur = pull upstream master --rebase --log --no-stat
   stsh = stash --keep-index
@@ -66,6 +68,8 @@
   su = !"git log --branches --since=$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi) --author=$(git config --get user.email) --format=format:'%C(cyan)%>(14)%ar %C(yellow)%h %Creset %s'"
   undo = reset --soft HEAD^
   wait = reset HEAD
+  which = !git branch | grep -i
+  lucky = !sh -c 'git checkout $(git which $1 -m1)' -
 
   # co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
   # fco = "!f() { git fetch && git co -a; }; f"
@@ -88,3 +92,7 @@
 [include]
   # For username / github token / etc
   path = ~/.gitconfig.local
+
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
