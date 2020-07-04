@@ -30,13 +30,10 @@
   useconfigonly = true
 
 [push]
-  default = nothing
+  default = simple
 
 [status]
   showUntrackedFiles = all
-
-# [url "https://"]
-  # insteadOf = git://
 
 [alias]
   br = branch
@@ -45,6 +42,7 @@
   cm = commit -m
   co = checkout
   ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
+  nb = "!f() { git checkout -b feat/NR1UI-$1-$2 master; }; f"
   ra = rebase --abort
   rc = rebase --continue
   ri = rebase master -i
@@ -57,6 +55,7 @@
   abort = checkout -- .
   amend = commit --amend --no-edit
   clean = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
+  co-pr = !sh -c 'git fetch upstream pull/$1/head:pr/$1 && git checkout pr/$1' -
   diff = diff --word-diff
   fixup = commit -m 'chore(*): Fixup'
   force = push --force-with-lease
@@ -70,9 +69,6 @@
   wait = reset HEAD
   which = !git branch | grep -i
   lucky = !sh -c 'git checkout $(git which $1 -m1)' -
-
-  # co = "!f() { git branch --no-color $1 | peco | sed -E -e 's/^[ \t]*(remotes\\/)?origin\\///' | xargs git checkout; }; f"
-  # fco = "!f() { git fetch && git co -a; }; f"
 
 [filter "media"]
   clean = git media clean %f
