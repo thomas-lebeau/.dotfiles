@@ -1,5 +1,6 @@
 [ -r ~/.bash_profile ] && source ~/.bash_profile
 
+
 # zstyle ':prezto:module' pmodule' \
 #   'syntax-highlighting'
 
@@ -17,7 +18,7 @@ autoload -Uz compinit; compinit
 autoload -U promptinit; promptinit
 prompt pure
 
-alias reload!='. ~/.zshrc'
+alias reload='. ~/.zshrc'
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -34,6 +35,3 @@ bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
 zstyle ':prezto:module:autosuggestions' color 'yes'
-
-# nr1 autocomplete setup
-NR1_AC_ZSH_SETUP_PATH=/Users/tlebeau/Library/Caches/newrelic-cli/autocomplete/zsh_setup && test -f $NR1_AC_ZSH_SETUP_PATH && source $NR1_AC_ZSH_SETUP_PATH;

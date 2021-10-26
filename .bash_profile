@@ -29,21 +29,6 @@ export HISTSIZE=10000000                        # big big history (default is 50
 export HISTFILESIZE=$HISTSIZE                   # big big history
 which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
 
-# Save and reload the history after each command finishes
-# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-# ^ the only downside with this is [up] on the readline will go over all history not just this bash session.
-
-##
-## hooking in other apps…
-##
-# export NVM_DIR="$HOME/.nvm"
-# . $(brew --prefix nvm)/nvm.sh
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# z beats cd most of the time.
-#   github.com/rupa/z
-# source ~/.dotfiles/z/z.sh
-
 ##
 ## Completion…
 ##
@@ -51,27 +36,11 @@ if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
     return 1 2> /dev/null || exit 1;
 fi;
 
-# bash completion.
-# if  which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-#     source "$(brew --prefix)/share/bash-completion/bash_completion";
-# elif [ -f /etc/bash_completion ]; then
-#     source /etc/bash_completion;
-# fi;
-
-# homebrew completion
-# if  which brew > /dev/null; then
-#     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-# fi;
 
 # # git completion
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
-
-# Enable tab completion for `g` by marking it as an alias for `git`
-if type __git_complete &> /dev/null; then
-    __git_complete g __git_main
-fi;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
@@ -92,5 +61,3 @@ shopt -s cdspell;
 # export ANDROID_HOME=/usr/local/share/android-sdk
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
