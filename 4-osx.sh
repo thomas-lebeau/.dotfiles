@@ -58,7 +58,7 @@ defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 defaults write com.apple.screencapture type -string "png"
 
 # Hide all desktop icons because who need 'em'
-defaults write com.apple.finder CreateDesktop -bool false
+# defaults write com.apple.finder CreateDesktop -bool false
 
 ###############################################################################
 # Finder                                                                      #
@@ -490,7 +490,7 @@ defaults write com.twitter.twitter-mac HideInBackground -bool true
 ###############################################################################
 
 # Add lock screen Message
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "If you find this computer please call Thomas Lebeau on +90 543 928 7402 or email me at lebeau.thomas@gmail.com"
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "If you find this computer please call Thomas Lebeau on +34 662 602 990 or email me at lebeau.thomas@gmail.com"
 
 ###############################################################################
 # Kill affected applications                                                  #

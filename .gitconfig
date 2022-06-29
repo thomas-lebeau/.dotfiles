@@ -43,6 +43,7 @@
   co = checkout
   ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
   nb = "!f() { git checkout -b feat/NR1UI-$1-$2 master; }; f"
+  nm = "!f() { git add . && git stash && git checkout -b $1 master && git stash pop; }; f"
   ra = rebase --abort
   rc = rebase --continue
   ri = rebase master -i

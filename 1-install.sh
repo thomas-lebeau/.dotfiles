@@ -7,7 +7,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Update submodules
 cd "${BASEDIR}"
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
 # Backup some stuffs
 mkdir -p ~/migration
