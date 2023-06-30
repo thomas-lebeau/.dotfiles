@@ -83,10 +83,15 @@
   smudge = git-lfs smudge %f
   required = true
 
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
+
+# Personal config (default)
 [include]
   # For username / github token / etc
   path = ~/.gitconfig.local
 
-[merge "npm-merge-driver"]
-	name = automatically merge npm lockfiles
-	driver = npx npm-merge-driver merge %A %O %B %P
+# Work config
+[includeIf "gitdir:~/acme/"]
+  path = ~/.gitconfig.work

@@ -34,12 +34,21 @@ brew install pure
 ```
 
 6. Install other apps
-7.
 
 ```
 brew install vs-code
 brew install google-chrome
 brew install zoom
+brew install rectangle-pro
+```
+
+7. Install app-store apps
+
+```
+brew install mas
+
+# Lungo
+mas install 1263070803
 ```
 
 <!-- TODO
