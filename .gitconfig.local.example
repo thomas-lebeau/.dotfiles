@@ -1,0 +1,13 @@
+[user]
+  name = John Doe
+  useconfigonly = true
+  signingkey = ssh-ed25519 XXX...XXX
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"

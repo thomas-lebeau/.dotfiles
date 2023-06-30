@@ -28,3 +28,6 @@ Thumbs.db
 
 # Compiled Python files
 *.pyc
+
+# Files containing private informations
+.gitconfig.local
