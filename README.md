@@ -1,7 +1,7 @@
 1. Install [homebrew](https://brew.sh/)
 
 ```
- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 2. Install 1password
@@ -29,8 +29,8 @@ brew install pure
 5. Install node
 
 ```
- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
- nvm install 20
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+nvm install 20
 ```
 
 6. Install other apps
