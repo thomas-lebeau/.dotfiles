@@ -11,13 +11,10 @@ alias cls="clear"
 alias dl="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias h="history"
-alias j="jobs"
 alias o="open ."
 alias p="cd ~/Projects"
-alias s="subl"
 alias v="vim"
 
-alias cask='brew cask' # i <3 u cask
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias dig="dig +nocmd any +multiline +noall +answer" # All the dig info
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash" # Empty the Trash on all mounted volumes and the main HDD
@@ -33,7 +30,6 @@ alias npmlink="npm ls -g --depth=0 --link"
 alias please='sudo !!'
 alias rm="rm -i" # safety first
 alias sudo='sudo '
-# alias undopush="git push -f origin HEAD^:master"
 
 alias ll='ls -l'
 alias l='ls -l'

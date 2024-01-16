@@ -57,9 +57,8 @@ mas install 1263070803
 2. Install more things
 
 ```
-brew install iterm
-brew install zoom
-brew install vs-code
-brew install install google-chrome
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
+brew install fzf
 ```
 -->

@@ -28,6 +28,7 @@
 
 [push]
   default = simple
+  autoSetupRemote = true
 
 [status]
   showUntrackedFiles = all
@@ -36,14 +37,17 @@
   br = branch
   ca = commit --amend
   ci = commit
-  cm = commit -m
+  cm = "!f() { git commit -m \"$*\"; }; f"
+  cf = fixup
   co = checkout
+  fr = rebase -i --autosquash main
+  fu = fixup
+  ico = "!git branch | fzf | xargs -o git checkout"
   ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
-  nb = "!f() { git checkout -b feat/NR1UI-$1-$2 master; }; f"
-  nm = "!f() { git add . && git stash && git checkout -b $1 master && git stash pop; }; f"
+  o = !sh -c 'gh pr view --web' -
   ra = rebase --abort
   rc = rebase --continue
-  ri = rebase master -i
+  ri = rebase main -i
   rs = rebase --skip
   st = !git status -s && git diff --shortstat
   w = which
@@ -55,9 +59,12 @@
   clean = "!f() { git branch --no-color --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
   co-pr = !sh -c 'git fetch upstream pull/$1/head:pr/$1 && git checkout pr/$1' -
   diff = diff --word-diff
-  fixup = commit -m 'chore(*): Fixup'
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges main..HEAD | fzf | cut -c -7 | xargs -o git commit --fixup"
   force = push --force-with-lease
-  pur = pull upstream master --rebase --log --no-stat
+  main = checkout main
+  pur = "!f() { if [ ! -z $(git remote | grep -E "^upstream$") ]; then git pur-upstream; else git pur-origin; fi }; f"
+  pur-upstream = pull upstream main --rebase --log --no-stat
+  pur-origin = pull origin main --rebase --log --no-stat
   stsh = stash --keep-index
   staash = stash --include-untracked
   staaash = stash --all
@@ -93,5 +100,5 @@
   path = ~/.gitconfig.local
 
 # Work config
-[includeIf "gitdir:~/acme/"]
+[includeIf "gitdir:~/Work/"]
   path = ~/.gitconfig.work
