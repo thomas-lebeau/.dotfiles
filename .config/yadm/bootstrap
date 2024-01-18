@@ -1,0 +1,38 @@
+#!/bin/sh
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+  if [ -d "$HOME/.config/iterm2" ]; then
+    echo "Setting iTerm preference folder"
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.config/iterm2"
+  fi
+
+  # setup macos defaults
+  if [ -f "$HOME/.macos" ]; then
+    echo "Setting macOS defaults"
+    . "$HOME/.macos"
+  fi
+
+fi
+
+# install node if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Install latest Nodejs lts"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+fi
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:thomas-lebeau/.dotfiles.git"
