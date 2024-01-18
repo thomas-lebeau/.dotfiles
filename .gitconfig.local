@@ -1,7 +1,8 @@
 [user]
-  name = John Doe
+  name = Thomas Lebeau
+  email = lebeau.thomas@gmail.com
   useconfigonly = true
-  signingkey = ssh-ed25519 XXX...XXX
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH6FBRH37ZtwV3auHVDefeB29CxJaphptwER2ulj5Df8
 
 [commit]
   gpgsign = true
@@ -11,3 +12,4 @@
 
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
