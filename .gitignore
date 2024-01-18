@@ -1,0 +1,33 @@
+# dependencies
+node_modules
+
+# working files
+.vim/viminfo
+.vim/swaps/*
+.vim/undo
+*.sw
+.vscode
+
+# Extras
+extras
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Editor config files
+.idea
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Compiled Python files
+*.pyc
+
+# Files containing private informations
+.gitconfig.local

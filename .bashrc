@@ -1,1 +1,1 @@
-/Users/thomas/.dotfiles/.bashrc
+[ -n "$PS1" ] && source ~/.bash_profile
