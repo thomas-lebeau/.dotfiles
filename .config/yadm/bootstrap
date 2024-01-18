@@ -10,7 +10,7 @@ if [ "$system_type" = "Darwin" ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   fi
 
-  if [ -f "$HOME/.Brewfile" ]; then
+  if [ -f "$HOME/Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew bundle --global
   fi
@@ -27,6 +27,10 @@ if [ "$system_type" = "Darwin" ]; then
   fi
 
 fi
+
+echo "Installing iterm2 themes"
+open .config/iterm2/GitHub\ Dark\ Dimmed.itermcolors
+open .config/iterm2/GitHub\ Light\ Default.itermcolors
 
 # install node if it's missing
 if ! command -v brew >/dev/null 2>&1; then
