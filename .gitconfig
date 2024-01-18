@@ -35,13 +35,16 @@
 
 [alias]
   br = branch
+  c = !sh -c 'gh pr checks' -
   ca = commit --amend
   ci = commit
+  cl = lucky
   cm = "!f() { git commit -m \"$*\"; }; f"
   cf = fixup
   co = checkout
+  f = fetch origin main:main
   fr = rebase -i --autosquash main
-  fu = fixup
+  fu = !git commit --fixup $(git rev-parse HEAD)
   ico = "!git branch | fzf | xargs -o git checkout"
   ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
   o = !sh -c 'gh pr view --web' -
@@ -51,7 +54,6 @@
   rs = rebase --skip
   st = !git status -s && git diff --shortstat
   w = which
-  cl = lucky
 
   aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
   abort = checkout -- .
