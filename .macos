@@ -144,7 +144,6 @@ defaults write com.apple.dock show-process-indicators -bool true
 # the Dock to launch apps.
 defaults write com.apple.dock persistent-apps -array
 
-
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
@@ -208,7 +207,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Hide window number
 defaults write com.googlecode.iterm2 WindowNumber -bool false
-
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #

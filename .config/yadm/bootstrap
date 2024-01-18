@@ -26,14 +26,13 @@ if [ "$system_type" = "Darwin" ]; then
     . "$HOME/.macos"
   fi
 
+  echo "Installing iterm2 themes"
+  open .config/iterm2/GitHub\ Dark\ Dimmed.itermcolors
+  open .config/iterm2/GitHub\ Light\ Default.itermcolors
 fi
 
-echo "Installing iterm2 themes"
-open .config/iterm2/GitHub\ Dark\ Dimmed.itermcolors
-open .config/iterm2/GitHub\ Light\ Default.itermcolors
-
 # install node if it's missing
-if ! command -v brew >/dev/null 2>&1; then
+if ! command -v node >/dev/null 2>&1; then
   echo "Install latest Nodejs lts"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 fi
