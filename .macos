@@ -2,6 +2,25 @@
 
 # ~/.osx — https://mths.be/osx
 
+###############################################################################
+# How to find defaults commands                                               #
+###############################################################################
+
+# defaults read > old.plist
+# defaults -currentHost read > host-old.plist
+
+# Change some settings
+
+# defaults read > new.plist
+# defaults -currentHost read > host-new.plist
+
+# git difftool --no-index old.plist new.plist
+# git difftool --no-index host-old.plist host-new.plist
+
+###############################################################################
+# Start                                                                       #
+###############################################################################
+
 # Ask for the administrator password upfront
 sudo -v
 
