@@ -29,6 +29,11 @@ export HISTSIZE=10000000                        # big big history (default is 50
 export HISTFILESIZE=$HISTSIZE                   # big big history
 which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
 
+
+[ -s "/opt/homebrew/etc/profile.d/bash_completion.sh" ] && . /opt/homebrew/etc/profile.d
+[ -s "/opt/homebrew/etc/profile.d/z.sh" ] && . /opt/homebrew/etc/profile.d/z.sh
+
+
 ##
 ## Completion…
 ##
@@ -41,10 +46,10 @@ for file in ~/.{bash_prompt}; do
 done
 unset file
 
-# # git completion
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-fi
+# # # git completion
+# if [ -f ~/.git-completion.bash ]; then
+#     source ~/.git-completion.bash
+# fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
@@ -62,6 +67,5 @@ shopt -s nocaseglob
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-# export ANDROID_HOME=/usr/local/share/android-sdk
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
