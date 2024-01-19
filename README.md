@@ -5,5 +5,5 @@ yadm clone https://github.com/thomas-lebeau/.dotfiles.git
 ```
 
 2. import iterm keymap preferences
-  - iterm2 > Profiles > Keys > Presets > Import... 
+  - iterm2 > Keys > Key Bindings > Presets > Import... 
   - select file in `~/.config/item2/key-mappings.itermkeymap`
