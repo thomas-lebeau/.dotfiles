@@ -28,6 +28,5 @@ cask "spotify"
 cask "visual-studio-code"
 cask "whatsapp"
 cask "zoom"
-mas "Developer", id: 640199958
 mas "Hand Mirror", id: 1502839586
 mas "Lungo", id: 1263070803
