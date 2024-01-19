@@ -45,7 +45,7 @@
   f = fetch origin main:main
   fr = rebase -i --autosquash main
   fu = !git commit --fixup $(git rev-parse HEAD)
-  ico = "!git branch | fzf | xargs -o git checkout"
+  ico = "!git branch --sort=-committerdate | fzf --height 50% | xargs -o git checkout"
   ls = log --pretty=oneline --abbrev-commit --graph --decorate -n 10
   o = !sh -c 'gh pr view --web' -
   ra = rebase --abort
