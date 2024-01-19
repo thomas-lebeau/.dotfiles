@@ -12,8 +12,10 @@ export HOMEBREW_NO_ENV_HINTS=1
 
 export NVM_DIR="$HOME/.nvm"
 
-NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-NODE_GLOBALS+=(node nvm)
+if ! command -v nvm >/dev/null 2>&1; then
+  NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+  NODE_GLOBALS+=(node nvm)
+fi
 
 _load_nvm() {
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
