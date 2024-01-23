@@ -1,45 +1,33 @@
 [ -r ~/.bash_profile ] && source ~/.bash_profile
 
+alias reload='. ~/.zshrc'
 
-# zstyle ':prezto:module' pmodule' \
-#   'syntax-highlighting'
-
-# zstyle ':prezto:module:syntax-highlighting' color 'yes'
-
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
-#   'pattern' \
-#   'line' \
-#   'cursor' \
-#   'root'
-
+# prompt (pure)
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -Uz compinit; compinit
 autoload -U promptinit; promptinit
 prompt pure
 
-alias reload='. ~/.zshrc'
 
-# matches case insensitive for lowercase
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# pasting with tabs doesn't perform completion
-# zstyle ':completion:*' insert-tab pending
-# zstyle ':completion:*' menu select
+source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-# zstyle ':prezto:module:autosuggestions' color 'yes'
+  autoload -Uz compinit
+  compinit
+fi
+
+zstyle ':autocomplete:*' ignored-input '*'
+zstyle ':autocomplete:*' widget-style menu-select
+
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8d949e"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

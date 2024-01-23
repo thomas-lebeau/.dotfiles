@@ -18,10 +18,6 @@ alias v="vim"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias dig="dig +nocmd any +multiline +noall +answer" # All the dig info
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash" # Empty the Trash on all mounted volumes and the main HDD
-if which hub > /dev/null; then
-  alias git=hub
-fi
-alias g=git
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
